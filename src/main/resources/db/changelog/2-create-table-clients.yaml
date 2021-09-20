@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_clients
+      author: Piskarev Georgij
+      changes:
+        - sql:
+            sql:
+              "create table clients
+              (
+              id bigserial
+              constraint clients_pk
+              primary key,
+              name VARCHAR(100) not null,
+              company VARCHAR(255),
+              years_of_cooperation int not null
+              );"
