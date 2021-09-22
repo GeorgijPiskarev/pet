@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "org.jetbrains.kotlin.jvm" version "1.5.31"
     id 'java'
 }
 
@@ -18,13 +19,37 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs = [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "16"
+}
+
+ext {
+    mapstructVersion = "1.2.0.Final"
+    lombokVersion = "1.18.2"
+}
+
 dependencies {
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.4'
     implementation 'org.springframework.boot:spring-boot-starter-security:2.5.4'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
     implementation 'org.hibernate.validator:hibernate-validator:7.0.1.Final'
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"
     implementation 'org.liquibase:liquibase-core:4.4.3'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     compileOnly 'org.projectlombok:lombok:1.18.20'
@@ -32,8 +57,4 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
     testImplementation 'org.springframework.security:spring-security-test:5.5.1'
-}
-
-test {
-    useJUnitPlatform()
 }

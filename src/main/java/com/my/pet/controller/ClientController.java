@@ -1,12 +1,11 @@
 package com.my.pet.controller;
 
-import com.my.pet.model.Client;
+import com.my.pet.model.dto.ClientDto;
+import com.my.pet.model.dto.ClientListDto;
 import com.my.pet.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,20 +15,20 @@ public class ClientController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('user:read')")
-    public List<Client> getAll() {
+    public ClientListDto getAll() {
         return clientService.getAll();
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('user:read')")
-    public Client getById(@PathVariable Long id) {
+    public ClientDto getById(@PathVariable Long id) {
         return clientService.getById(id);
     }
 
     @PostMapping
     @PreAuthorize("hasAuthority('user:write')")
-    public Client create(@RequestBody Client client) {
-        return clientService.create(client);
+    public ClientDto create(@RequestBody ClientDto clientDto) {
+        return clientService.create(clientDto);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,6 @@
 package com.my.pet.controller;
 
-import com.my.pet.model.User;
+import com.my.pet.model.dto.UserDto;
 import com.my.pet.security.AuthenticationDTO;
 import com.my.pet.security.JwtTokenProvider;
 import com.my.pet.service.UserService;
@@ -31,7 +31,7 @@ public class AuthenticationController {
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationDTO request) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            User user = userService.findByEmail(request.getEmail());
+            UserDto user = userService.findByEmail(request.getEmail());
             String token = jwtTokenProvider.createToken(request.getEmail(), user.getRole().name());
             Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());

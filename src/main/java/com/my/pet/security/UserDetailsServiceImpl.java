@@ -1,6 +1,6 @@
 package com.my.pet.security;
 
-import com.my.pet.model.User;
+import com.my.pet.model.entity.User;
 import com.my.pet.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

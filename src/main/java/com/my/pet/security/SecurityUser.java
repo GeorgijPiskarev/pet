@@ -1,7 +1,7 @@
 package com.my.pet.security;
 
 import com.my.pet.model.enums.Status;
-import com.my.pet.model.User;
+import com.my.pet.model.entity.User;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
