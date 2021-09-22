@@ -1,5 +1,7 @@
 package com.my.pet.model;
 
+import com.my.pet.model.enums.Role;
+import com.my.pet.model.enums.Status;
 import lombok.Data;
 
 import javax.persistence.*;

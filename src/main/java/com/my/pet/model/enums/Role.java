@@ -1,4 +1,4 @@
-package com.my.pet.model;
+package com.my.pet.model.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

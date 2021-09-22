@@ -1,6 +1,6 @@
 package com.my.pet.security;
 
-import com.my.pet.model.Status;
+import com.my.pet.model.enums.Status;
 import com.my.pet.model.User;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
