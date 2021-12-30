@@ -7,7 +7,7 @@ databaseChangeLog:
             sql:
               "create table clients
               (
-              id bigserial
+              id serial
               constraint clients_pk
               primary key,
               name VARCHAR(100) not null,

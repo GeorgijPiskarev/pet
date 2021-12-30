@@ -27,6 +27,8 @@ compileJava {
     options.compilerArgs = [
             '-Amapstruct.defaultComponentModel=spring'
     ]
+    options.encoding('UTF-8')
+
 }
 
 compileTestKotlin {
@@ -57,4 +59,5 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
     testImplementation 'org.springframework.security:spring-security-test:5.5.1'
+    testImplementation 'com.h2database:h2:2.0.204'
 }
